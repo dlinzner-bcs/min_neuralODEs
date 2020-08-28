@@ -65,5 +65,7 @@ if __name__ == "__main__":
             plt.plot(node.t_z, sol.y[1, :],'b')
             plt.plot(node.t_a, node.a.T[:, 0], 'g')
             plt.legend(loc="upper left")
+            plt.xlabel('time')
+            plt.ylabel('state')
             plt.show()
             print(loss)
