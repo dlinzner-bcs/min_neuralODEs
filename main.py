@@ -49,7 +49,7 @@ if __name__ == "__main__":
         x = sol.y[:, -1]
         x1s[k, :] = x
 
-    node = neuralODE(f, weights, x0s, x1s, t0, t1, M, 0.01)
+    node = neuralODE(f, weights, x0s, x1s, t0, t1, M)
     for i in range(0,1000):
         loss = node.train_step() #stochastic gradient descent
         # gt solution

@@ -4,8 +4,9 @@ from scipy.integrate import solve_ivp
 
 class neuralODE():
     #TODO write asserts
-    def __init__(self,fun,weights,x0s,x1s,t0,t1,M,delta,iter_max=100):
+    def __init__(self,fun,weights,x0s,x1s,t0,t1,M,delta = 0.01,iter_max=100, batch = 100):
         self.iter_max = iter_max
+        self.batch    = batch
         self.fun = fun
         self.delta = delta
         self.w = weights
@@ -104,7 +105,7 @@ class neuralODE():
 
         w = self.w
         loss = 0
-        batch = np.random.randint(0,len(self.x0s),100)
+        batch = np.random.randint(0,len(self.x0s),self.batch)
         for k in batch :
 
             self.x0 = self.x0s[k, :].flatten()
