@@ -67,7 +67,7 @@ class neuralODE():
         "Output: Backward solution of adjoint ODE [a(T),...,a(0)]"
         def augmented(t,a):
             J = self.jacobian(self.z,t,self.w)
-            return -a@J
+            return -a@J # note that for linear fun f(x) = Ax, J = A
 
         sol = solve_ivp(augmented, [self.t[-1], self.t[0]],y0 = self.dloss_dx(), t_eval=np.flip(self.t))
         self.a = sol.y
